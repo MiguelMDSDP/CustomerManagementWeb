@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Form, Input, Button, Checkbox, notification } from "antd";
 import { useForm, Controller } from "react-hook-form";
 
@@ -13,10 +13,18 @@ interface LoginForm {
 }
 
 const Login: React.FC = () => {
-  const { login } = useAuth();
+  const { login, checkAuthentication, isAuthenticated } = useAuth();
   const navigate = useNavigate();
   const { control, handleSubmit } = useForm<LoginForm>();
   const [rememberMe, setRememberMe] = useState(false);
+
+  useEffect(() => {
+    checkAuthentication();
+  }, []);
+
+  useEffect(() => {
+    if (isAuthenticated) navigate("/home");
+  }, [isAuthenticated]);
 
   const onSubmit = (data: LoginForm) => {
     login(data.username, data.password, rememberMe)
@@ -26,7 +34,6 @@ const Login: React.FC = () => {
             message: "Login Successful",
             description: "You have successfully logged in.",
           });
-          navigate("/home");
         } else {
           notification.error({
             message: "Login Failed",

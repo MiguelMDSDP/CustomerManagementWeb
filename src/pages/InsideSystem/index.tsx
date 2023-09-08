@@ -1,19 +1,22 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Button, notification } from "antd";
 import { useAuth } from "../../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 import "./styles.css";
 
 const InsideSystemPage: React.FC = () => {
-  const { logout } = useAuth();
+  const { logout, isAuthenticated } = useAuth();
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!isAuthenticated) navigate("/");
+  }, [isAuthenticated]);
 
   const handleLogout = async () => {
     logout();
     notification.success({
       message: "Logout Successful",
     });
-    navigate("/");
   };
 
   return (
