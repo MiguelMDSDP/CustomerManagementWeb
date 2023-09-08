@@ -17,7 +17,7 @@ const Login: React.FC = () => {
   const [rememberMe, setRememberMe] = useState(false);
 
   const onSubmit = (data: LoginForm) => {
-    login(data.username, data.password)
+    login(data.username, data.password, rememberMe)
       .then((response) => {
         if (response.success) {
           notification.success({

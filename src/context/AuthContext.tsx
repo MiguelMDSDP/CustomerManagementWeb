@@ -5,7 +5,11 @@ import { LoginRequest, LoginResponse } from "../types/auth";
 
 interface AuthContextType {
   user: User | null;
-  login: (username: string, password: string) => Promise<LoginResponse>;
+  login: (
+    username: string,
+    password: string,
+    remember: boolean
+  ) => Promise<LoginResponse>;
   logout: () => Promise<void>;
 }
 
@@ -20,10 +24,11 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
 
   const login = async (
     username: string,
-    password: string
+    password: string,
+    remember: boolean
   ): Promise<LoginResponse> => {
     const data: LoginRequest = { username, password };
-    const loginResponse = await authService.login(data);
+    const loginResponse = await authService.login(data, remember);
     if (loginResponse.success && loginResponse.user)
       setUser(loginResponse.user);
     return loginResponse;
