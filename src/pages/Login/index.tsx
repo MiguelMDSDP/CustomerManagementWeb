@@ -5,6 +5,7 @@ import { useForm, Controller } from "react-hook-form";
 import { useAuth } from "../../context/AuthContext";
 
 import "./styles.css";
+import { useNavigate } from "react-router-dom";
 
 interface LoginForm {
   username: string;
@@ -13,6 +14,7 @@ interface LoginForm {
 
 const Login: React.FC = () => {
   const { login } = useAuth();
+  const navigate = useNavigate();
   const { control, handleSubmit } = useForm<LoginForm>();
   const [rememberMe, setRememberMe] = useState(false);
 
@@ -24,6 +26,7 @@ const Login: React.FC = () => {
             message: "Login Successful",
             description: "You have successfully logged in.",
           });
+          navigate("/home");
         } else {
           notification.error({
             message: "Login Failed",

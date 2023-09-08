@@ -2,6 +2,7 @@ import React, { createContext, useContext, useState, ReactNode } from "react";
 import { User } from "../types/user";
 import { authService } from "../services/authService";
 import { LoginRequest, LoginResponse } from "../types/auth";
+import Cookies from "js-cookie";
 
 interface AuthContextType {
   user: User | null;
@@ -28,19 +29,18 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     remember: boolean
   ): Promise<LoginResponse> => {
     const data: LoginRequest = { username, password };
-    const loginResponse = await authService.login(data, remember);
-    if (loginResponse.success && loginResponse.user)
+    const loginResponse = await authService.login(data);
+    if (loginResponse.success && loginResponse.user) {
       setUser(loginResponse.user);
+      if (loginResponse.user.token && remember)
+        Cookies.set("authToken", loginResponse.user.token, { expires: 7 });
+    }
     return loginResponse;
   };
 
   const logout = async () => {
-    try {
-      await authService.logout();
-      setUser(null);
-    } catch (error) {
-      console.error("Logout error:", error);
-    }
+    setUser(null);
+    Cookies.remove("authToken");
   };
 
   return (
