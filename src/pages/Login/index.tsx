@@ -12,7 +12,7 @@ interface LoginForm {
   password: string;
 }
 
-const Login: React.FC = () => {
+const LoginPage: React.FC = () => {
   const { login, checkAuthentication, isAuthenticated } = useAuth();
   const navigate = useNavigate();
   const { control, handleSubmit } = useForm<LoginForm>();
@@ -94,4 +94,4 @@ const Login: React.FC = () => {
   );
 };
 
-export default Login;
+export default LoginPage;
