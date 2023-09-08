@@ -1,8 +1,10 @@
 import React, { useState } from "react";
-import { Form, Input, Button, Checkbox } from "antd";
+import { Form, Input, Button, Checkbox, notification } from "antd";
 import { useForm, Controller } from "react-hook-form";
-import "./styles.css";
+
 import { useAuth } from "../../context/AuthContext";
+
+import "./styles.css";
 
 interface LoginForm {
   username: string;
@@ -17,10 +19,24 @@ const Login: React.FC = () => {
   const onSubmit = (data: LoginForm) => {
     login(data.username, data.password)
       .then((response) => {
-        console.log(response);
+        if (response.success) {
+          notification.success({
+            message: "Login Successful",
+            description: "You have successfully logged in.",
+          });
+        } else {
+          notification.error({
+            message: "Login Failed",
+            description: response.errorMessage,
+          });
+        }
       })
       .catch((error) => {
-        console.error("Login error:", error);
+        notification.error({
+          message: "Login Failed",
+          description: error.response?.data || "Something went wrong.",
+        });
+        console.error("Login error: ", error);
       });
   };
 

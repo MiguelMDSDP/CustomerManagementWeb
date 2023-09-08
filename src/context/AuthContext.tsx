@@ -1,10 +1,11 @@
 import React, { createContext, useContext, useState, ReactNode } from "react";
 import { User } from "../types/user";
-import { LoginRequest, authService } from "../services/authService";
+import { authService } from "../services/authService";
+import { LoginRequest, LoginResponse } from "../types/auth";
 
 interface AuthContextType {
   user: User | null;
-  login: (username: string, password: string) => Promise<void>;
+  login: (username: string, password: string) => Promise<LoginResponse>;
   logout: () => Promise<void>;
 }
 
@@ -17,14 +18,15 @@ interface AuthProviderProps {
 export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   const [user, setUser] = useState<User | null>(null);
 
-  const login = async (username: string, password: string) => {
-    try {
-      const data: LoginRequest = { username, password };
-      const authenticatedUser = await authService.login(data);
-      setUser(authenticatedUser);
-    } catch (error) {
-      console.error("Login error:", error);
-    }
+  const login = async (
+    username: string,
+    password: string
+  ): Promise<LoginResponse> => {
+    const data: LoginRequest = { username, password };
+    const loginResponse = await authService.login(data);
+    if (loginResponse.success && loginResponse.user)
+      setUser(loginResponse.user);
+    return loginResponse;
   };
 
   const logout = async () => {
