@@ -1,14 +1,15 @@
-import { LoginRequest, LoginResponse } from "../types/auth";
+import { LoginRequest } from "../types/auth";
+import { IntegrationResponse } from "../types/service";
 import { User } from "../types/user";
 import axiosInstance from "./config";
 
 export const authService = {
-  login: async (data: LoginRequest): Promise<LoginResponse> => {
+  login: async (data: LoginRequest): Promise<IntegrationResponse<User>> => {
     try {
       const response = await axiosInstance.post<User>("/Auth/login", data);
       return {
         success: true,
-        user: response.data,
+        data: response.data,
       };
     } catch (error: any) {
       return {

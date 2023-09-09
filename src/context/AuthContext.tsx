@@ -39,11 +39,11 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   ): Promise<LoginResponse> => {
     const data: LoginRequest = { username, password };
     const loginResponse = await authService.login(data);
-    if (loginResponse.success && loginResponse.user) {
-      setUser(loginResponse.user);
+    if (loginResponse.success && loginResponse.data) {
+      setUser(loginResponse.data);
       setIsAuthenticated(true);
-      if (loginResponse.user.token && remember)
-        Cookies.set("authToken", loginResponse.user.token, { expires: 7 });
+      if (loginResponse.data.token && remember)
+        Cookies.set("authToken", loginResponse.data.token, { expires: 7 });
     }
     return loginResponse;
   };

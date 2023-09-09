@@ -5,3 +5,5 @@ export type Customer = {
   email: string;
   isActive: boolean;
 };
+
+export type MinimalCustomerRequest = Omit<Customer, "id">;
