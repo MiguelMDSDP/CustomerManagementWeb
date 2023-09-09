@@ -33,7 +33,7 @@ Before you begin, ensure you have met the following requirements:
 2. Change to the project directory:
 
    ```bash
-   cd frontend
+   cd CustomerManagementWeb
    ```
   
 3. Install project dependencies:
