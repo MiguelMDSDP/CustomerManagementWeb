@@ -42,13 +42,20 @@ Before you begin, ensure you have met the following requirements:
     yarn install
     ```
 
-4. Run the application:
+4. Before running the application, create a .env file inside the project with the same content of the .env.example file.
+
+    ```.env
+    REACT_APP_API_URL=http://localhost
+    REACT_APP_API_PORT=5000
+    ```
+
+5. Run the application:
 
    ```bash
    yarn start
    ```
 
-5. The application will be available at <http://localhost:3000>.
+6. The application will be available at <http://localhost:3000>.
 
 ## Libraries Used
 
