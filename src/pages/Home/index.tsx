@@ -1,29 +1,26 @@
-import { useEffect } from "react";
-import { notification } from "antd";
-import { useAuth } from "../../context/AuthContext";
-import { useNavigate } from "react-router-dom";
-import { Layout, Menu, Dropdown } from "antd";
+import { Navigate } from "react-router-dom";
+import { Layout, Menu, Dropdown, notification } from "antd";
+
 import {
   UserOutlined,
   LogoutOutlined,
   GithubFilled,
   CopyrightOutlined,
 } from "@ant-design/icons";
+
 import CustomersTable from "../../components/CustomersTable";
-import "./styles.css";
-import { Footer } from "antd/es/layout/layout";
+import { useAuth } from "../../context/AuthContext";
 import { useCustomers } from "../../hooks/useCustomers";
 
-const { Header, Content } = Layout;
+import "./styles.css";
+
+const { Header, Content, Footer } = Layout;
 
 const HomePage = () => {
   const { customersList } = useCustomers();
-  const { logout, isAuthenticated } = useAuth();
-  const navigate = useNavigate();
+  const { isAuthenticated, logout } = useAuth();
 
-  useEffect(() => {
-    if (!isAuthenticated) navigate("/");
-  }, [isAuthenticated]);
+  if (!isAuthenticated) return <Navigate to="/" />;
 
   const handleLogout = async () => {
     logout();
