@@ -1,7 +1,7 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import LoginPage from "./pages/Login";
-import InsideSystemPage from "./pages/InsideSystem";
+import HomePage from "./pages/Home";
 import NotFoundPage from "./pages/NotFound";
 
 import { AuthProvider } from "./context/AuthContext";
@@ -13,7 +13,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/home",
-    element: <InsideSystemPage />,
+    element: <HomePage />,
   },
   {
     path: "*",
