@@ -50,12 +50,23 @@ const CustomersTable: FC<CustomersTableProps> = ({
       dataIndex: "isActive",
       key: "isActive",
       render: (isActive) => <StatusTag active={isActive} />,
+      filters: [
+        {
+          text: "Active",
+          value: true,
+        },
+        {
+          text: "Inactive",
+          value: false,
+        },
+      ],
+      onFilter: (value, customer) => customer.isActive === value,
     },
     {
-      width: 75,
+      width: 120,
       key: "actions",
       render: (customer: Customer) => (
-        <div className="actions-container">
+        <div className="table-actions-container">
           <Tooltip placement="top" title="Edit customer">
             <EditOutlined onClick={() => onEdit(customer)} />
           </Tooltip>

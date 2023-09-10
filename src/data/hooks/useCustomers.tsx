@@ -7,6 +7,28 @@ export const useCustomers = () => {
   const [customersList, setCustomersList] = useState<Customer[]>([]);
   const [customersLoading, setCustomersLoading] = useState<boolean>(false);
 
+  const [filteredCustomersList, setFilteredCustomersList] =
+    useState<Customer[]>(customersList);
+
+  const [searchQuery, setSearchQuery] = useState<string>("");
+
+  const handleSearch = (searchString: string) =>
+    setSearchQuery(searchString.toUpperCase());
+  const resetSearch = () => setSearchQuery("");
+
+  useEffect(() => {
+    let newList = customersList;
+    if (searchQuery) {
+      newList = newList.filter(
+        (customer) =>
+          customer.email.toUpperCase().includes(searchQuery) ||
+          customer.firstName.toUpperCase().includes(searchQuery) ||
+          customer.lastName.toUpperCase().includes(searchQuery)
+      );
+    }
+    setFilteredCustomersList(newList);
+  }, [searchQuery, customersList]);
+
   const fetchCustomers = async () => {
     setCustomersLoading(true);
     const response = await customersService.list();
@@ -65,9 +87,12 @@ export const useCustomers = () => {
   return {
     customersList,
     customersLoading,
+    filteredCustomersList,
     fetchCustomers,
     createCustomer,
     updateCustomer,
     deleteCustomer,
+    handleSearch,
+    resetSearch,
   };
 };

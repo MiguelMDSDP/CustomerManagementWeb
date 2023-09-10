@@ -11,19 +11,26 @@ import {
 
 import CustomersTable from "../../components/Tables/Customers";
 import CustomerModal from "../../components/Modals/Customers";
+import SearchInput from "../../components/Search";
 
 import { Customer } from "../../utils/types/customer";
+import { validateCustomer } from "../../utils/validators/customer";
+
 import { useAuth } from "../../data/context/AuthContext";
 import { useCustomers } from "../../data/hooks/useCustomers";
 
 import "./styles.css";
-import { validateCustomer } from "../../utils/validators/customer";
 
 const { Header, Content, Footer } = Layout;
 
 const HomePage = () => {
-  const { customersList, createCustomer, updateCustomer, deleteCustomer } =
-    useCustomers();
+  const {
+    filteredCustomersList,
+    createCustomer,
+    updateCustomer,
+    deleteCustomer,
+    handleSearch,
+  } = useCustomers();
   const { isAuthenticated, logout } = useAuth();
 
   const [isModalVisible, setIsModalVisible] = useState<boolean>(false);
@@ -113,10 +120,11 @@ const HomePage = () => {
           <div className="page-title-container">
             <h1 className="page-title">Customer List</h1>
           </div>
-          <div className="add-customer-container">
-            <Button type="primary" onClick={showModal}>
+          <div className="actions-container">
+            <Button size="large" type="primary" onClick={showModal}>
               Add Customer
             </Button>
+            <SearchInput onSearch={handleSearch} />
           </div>
         </div>
         <CustomersTable
@@ -124,7 +132,7 @@ const HomePage = () => {
           onDisable={handleDisable}
           onEnable={handleEnable}
           onEdit={handleEdit}
-          data={customersList}
+          data={filteredCustomersList}
         />
         <CustomerModal
           visible={isModalVisible}

@@ -7,9 +7,12 @@
   width: 50%;
 }
 
-.add-customer-container {
+.actions-container {
+  gap: 16px;
   width: 50%;
-  text-align: right;
+  display: flex;
+  margin-bottom: 24px;
+  justify-content: end;
 }
 
 .footer {

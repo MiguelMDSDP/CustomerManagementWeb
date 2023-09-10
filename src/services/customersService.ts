@@ -1,6 +1,6 @@
-import { Customer, MinimalCustomerRequest } from "../utils/types/customer";
-import { IntegrationResponse } from "../utils/types/service";
 import axiosInstance from "./config";
+import { IntegrationResponse } from "../utils/types/service";
+import { Customer, MinimalCustomerRequest } from "../utils/types/customer";
 
 export const customersService = {
   list: async (): Promise<IntegrationResponse<Customer[]>> => {
@@ -23,7 +23,6 @@ export const customersService = {
   ): Promise<IntegrationResponse<Customer>> => {
     try {
       const response = await axiosInstance.post<Customer>("/customers", data);
-      console.log(response);
       return {
         success: true,
         data: response.data,
@@ -41,8 +40,10 @@ export const customersService = {
     data: MinimalCustomerRequest
   ): Promise<IntegrationResponse<Customer>> => {
     try {
-      const response = await axiosInstance.put<Customer>(`/customers/${id}`, data);
-      console.log(response);
+      const response = await axiosInstance.put<Customer>(
+        `/customers/${id}`,
+        data
+      );
       return {
         success: true,
         data: response.data,
@@ -57,16 +58,15 @@ export const customersService = {
 
   delete: async (id: number): Promise<IntegrationResponse<undefined>> => {
     try {
-      const response = await axiosInstance.delete(`/customers/${id}`);
-      console.log(response);
+      await axiosInstance.delete(`/customers/${id}`);
       return {
         success: true,
-      }
+      };
     } catch (error: any) {
       return {
         success: false,
         errorMessage: error.response?.data,
-      }
+      };
     }
-  }
+  },
 };
