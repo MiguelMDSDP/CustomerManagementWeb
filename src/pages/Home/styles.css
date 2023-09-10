@@ -1,3 +1,17 @@
+.page-header {
+  display: flex;
+  width: 100%;
+}
+
+.page-title-container {
+  width: 50%;
+}
+
+.add-customer-container {
+  width: 50%;
+  text-align: right;
+}
+
 .footer {
   gap: 20px;
   display: flex;

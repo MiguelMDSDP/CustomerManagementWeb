@@ -1,6 +1,6 @@
-import { LoginRequest } from "../types/auth";
-import { IntegrationResponse } from "../types/service";
-import { User } from "../types/user";
+import { LoginRequest } from "../utils/types/auth";
+import { IntegrationResponse } from "../utils/types/service";
+import { User } from "../utils/types/user";
 import axiosInstance from "./config";
 
 export const authService = {

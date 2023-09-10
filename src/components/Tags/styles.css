@@ -1,0 +1,31 @@
+.status-tag {
+  gap: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.status-tag>.circle {
+  width: 15px;
+  height: 15px;
+  border-radius: 100%;
+}
+
+.status-tag.active>.circle {
+  background-color: #16a085;
+}
+
+.status-tag.inactive>.circle {
+  background-color: #e55039;
+}
+
+.status-tag>.label {
+  font-weight: bold;
+}
+
+.status-tag.active>.label {
+  color: #16a085;
+}
+
+.status-tag.inactive>.label {
+  color: #e55039;
+}

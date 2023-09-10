@@ -1,8 +1,9 @@
-import React, { createContext, useContext, useState, ReactNode } from "react";
-import { User } from "../types/user";
-import { authService } from "../services/authService";
-import { LoginRequest, LoginResponse } from "../types/auth";
 import Cookies from "js-cookie";
+import React, { createContext, useContext, useState, ReactNode } from "react";
+
+import { authService } from "../../services/authService";
+import { User } from "../../utils/types/user";
+import { LoginRequest, LoginResponse } from "../../utils/types/auth";
 
 interface AuthContextType {
   user: User | null;

@@ -1,12 +1,11 @@
-import { Customer, MinimalCustomerRequest } from "../types/customer";
-import { IntegrationResponse } from "../types/service";
+import { Customer, MinimalCustomerRequest } from "../utils/types/customer";
+import { IntegrationResponse } from "../utils/types/service";
 import axiosInstance from "./config";
 
 export const customersService = {
   list: async (): Promise<IntegrationResponse<Customer[]>> => {
     try {
       const response = await axiosInstance.get("/customers");
-      console.log(response);
       return {
         success: true,
         data: response.data,

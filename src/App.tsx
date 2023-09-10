@@ -4,7 +4,7 @@ import LoginPage from "./pages/Login";
 import HomePage from "./pages/Home";
 import NotFoundPage from "./pages/NotFound";
 
-import { AuthProvider } from "./context/AuthContext";
+import { AuthProvider } from "./data/context/AuthContext";
 
 const router = createBrowserRouter([
   {

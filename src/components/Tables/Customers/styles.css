@@ -1,0 +1,19 @@
+.actions-container {
+  gap: 25px;
+  display: flex;
+  justify-content: center;
+}
+
+.delete-icon {
+  cursor: pointer;
+  color: #e55039;
+  transition: 0.5s;
+}
+
+.delete-icon:hover {
+  color: #b71540;
+}
+
+.delete-icon:active {
+  color: #eb2f06;
+}

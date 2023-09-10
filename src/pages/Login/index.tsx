@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Form, Input, Button, Checkbox, notification } from "antd";
 import { useForm, Controller } from "react-hook-form";
 
-import { useAuth } from "../../context/AuthContext";
+import { useAuth } from "../../data/context/AuthContext";
 
 import "./styles.css";
 import { useNavigate } from "react-router-dom";
