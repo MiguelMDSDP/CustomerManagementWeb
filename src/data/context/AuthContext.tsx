@@ -3,7 +3,8 @@ import React, { createContext, useContext, useState, ReactNode } from "react";
 
 import { authService } from "../../services/authService";
 import { User } from "../../utils/types/user";
-import { LoginRequest, LoginResponse } from "../../utils/types/auth";
+import { LoginRequest } from "../../utils/types/auth";
+import { IntegrationResponse } from "../../utils/types/service";
 
 interface AuthContextType {
   user: User | null;
@@ -12,7 +13,7 @@ interface AuthContextType {
     username: string,
     password: string,
     remember: boolean
-  ) => Promise<LoginResponse>;
+  ) => Promise<IntegrationResponse<User>>;
   logout: () => Promise<void>;
   checkAuthentication: () => void;
 }
@@ -29,22 +30,31 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
 
   const checkAuthentication = () => {
     const authToken = Cookies.get("authToken");
-    if (authToken) setIsAuthenticated(true);
-    else if (!isAuthenticated) setIsAuthenticated(false);
+    if (authToken) {
+      setIsAuthenticated(true);
+      const authUser = Cookies.get("authUser");
+      if (authUser) setUser(JSON.parse(authUser));
+    } else if (!isAuthenticated) setIsAuthenticated(false);
   };
 
   const login = async (
     username: string,
     password: string,
     remember: boolean
-  ): Promise<LoginResponse> => {
+  ): Promise<IntegrationResponse<User>> => {
     const data: LoginRequest = { username, password };
     const loginResponse = await authService.login(data);
     if (loginResponse.success && loginResponse.data) {
       setUser(loginResponse.data);
       setIsAuthenticated(true);
-      if (loginResponse.data.token && remember)
-        Cookies.set("authToken", loginResponse.data.token, { expires: 7 });
+      if (remember) {
+        if (loginResponse.data.token)
+          Cookies.set("authToken", loginResponse.data.token, { expires: 7 });
+        if (loginResponse.data)
+          Cookies.set("authUser", JSON.stringify(loginResponse.data), {
+            expires: 7,
+          });
+      }
     }
     return loginResponse;
   };
@@ -53,6 +63,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     setUser(null);
     setIsAuthenticated(false);
     Cookies.remove("authToken");
+    Cookies.remove("authUser");
   };
 
   return (

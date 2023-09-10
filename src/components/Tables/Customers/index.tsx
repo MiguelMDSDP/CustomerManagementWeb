@@ -3,6 +3,8 @@ import { Popconfirm, Table, Tooltip } from "antd";
 import { ColumnsType } from "antd/es/table";
 
 import StatusTag from "../../Tags";
+import AccessController from "../../AccessController";
+
 import { Customer } from "../../../utils/types/customer";
 
 import {
@@ -66,41 +68,43 @@ const CustomersTable: FC<CustomersTableProps> = ({
       width: 120,
       key: "actions",
       render: (customer: Customer) => (
-        <div className="table-actions-container">
-          <Tooltip placement="top" title="Edit customer">
-            <EditOutlined onClick={() => onEdit(customer)} />
-          </Tooltip>
-          <Popconfirm
-            placement="bottomLeft"
-            onConfirm={() => onDelete(customer)}
-            title="Are you sure you want to delete this costumer?"
-          >
-            <Tooltip placement="top" title="Delete customer">
-              <DeleteOutlined className="delete-icon" />
+        <AccessController role="MANAGER">
+          <div className="table-actions-container">
+            <Tooltip placement="top" title="Edit customer">
+              <EditOutlined onClick={() => onEdit(customer)} />
             </Tooltip>
-          </Popconfirm>
-          {customer.isActive ? (
             <Popconfirm
               placement="bottomLeft"
-              onConfirm={() => onDisable(customer)}
-              title="Are you sure you want to disable this costumer?"
+              onConfirm={() => onDelete(customer)}
+              title="Are you sure you want to delete this costumer?"
             >
-              <Tooltip placement="top" title="Disable customer">
-                <LockOutlined />
+              <Tooltip placement="top" title="Delete customer">
+                <DeleteOutlined className="delete-icon" />
               </Tooltip>
             </Popconfirm>
-          ) : (
-            <Popconfirm
-              placement="bottomLeft"
-              onConfirm={() => onEnable(customer)}
-              title="Are you sure you want to enable this costumer?"
-            >
-              <Tooltip placement="top" title="Enable customer">
-                <UnlockOutlined />
-              </Tooltip>
-            </Popconfirm>
-          )}
-        </div>
+            {customer.isActive ? (
+              <Popconfirm
+                placement="bottomLeft"
+                onConfirm={() => onDisable(customer)}
+                title="Are you sure you want to disable this costumer?"
+              >
+                <Tooltip placement="top" title="Disable customer">
+                  <LockOutlined />
+                </Tooltip>
+              </Popconfirm>
+            ) : (
+              <Popconfirm
+                placement="bottomLeft"
+                onConfirm={() => onEnable(customer)}
+                title="Are you sure you want to enable this costumer?"
+              >
+                <Tooltip placement="top" title="Enable customer">
+                  <UnlockOutlined />
+                </Tooltip>
+              </Popconfirm>
+            )}
+          </div>
+        </AccessController>
       ),
     },
   ];

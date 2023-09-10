@@ -9,6 +9,7 @@ import {
   CopyrightOutlined,
 } from "@ant-design/icons";
 
+import AccessController from "../../components/AccessController";
 import CustomersTable from "../../components/Tables/Customers";
 import CustomerModal from "../../components/Modals/Customers";
 import SearchInput from "../../components/Search";
@@ -31,7 +32,7 @@ const HomePage = () => {
     deleteCustomer,
     handleSearch,
   } = useCustomers();
-  const { isAuthenticated, logout } = useAuth();
+  const { isAuthenticated, user, logout } = useAuth();
 
   const [isModalVisible, setIsModalVisible] = useState<boolean>(false);
   const [selectedCustomer, setSelectedCustomer] = useState<
@@ -110,7 +111,7 @@ const HomePage = () => {
         >
           <Dropdown overlay={menu} arrow trigger={["click", "hover"]}>
             <Menu.Item key="user">
-              <UserOutlined /> Admin
+              <UserOutlined /> {user ? user.username : "User"}
             </Menu.Item>
           </Dropdown>
         </Menu>
@@ -121,9 +122,11 @@ const HomePage = () => {
             <h1 className="page-title">Customer List</h1>
           </div>
           <div className="actions-container">
-            <Button size="large" type="primary" onClick={showModal}>
-              Add Customer
-            </Button>
+            <AccessController role="MANAGER">
+              <Button size="large" type="primary" onClick={showModal}>
+                Add Customer
+              </Button>
+            </AccessController>
             <SearchInput onSearch={handleSearch} />
           </div>
         </div>
