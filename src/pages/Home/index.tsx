@@ -108,7 +108,7 @@ const HomePage = () => {
           </Dropdown>
         </Menu>
       </Header>
-      <Content style={{ padding: "24px" }}>
+      <Content style={{ padding: "24px", minHeight: "85vh" }}>
         <div className="page-header">
           <div className="page-title-container">
             <h1 className="page-title">Customer List</h1>
