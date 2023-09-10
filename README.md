@@ -1,14 +1,34 @@
-# Customer Management API Web Application
+# Customer Management Web Application
 
 Welcome to the frontend project of our customer management application. This README provides essential information about the project, including requirements, scripts, libraries, and design patterns used.
 
 ## Table of Contents
 
-- [Getting Started](#getting-started)
-  - [Prerequisites](#prerequisites)
-  - [Installation](#installation-and-usage)
-- [Libraries Used](#libraries-used)
-- [License](#license)
+- [Customer Management Web Application](#customer-management-web-application)
+  - [Table of Contents](#table-of-contents)
+  - [Getting Started](#getting-started)
+    - [Prerequisites](#prerequisites)
+    - [Installation And Usage](#installation-and-usage)
+      - [Credentials](#credentials)
+  - [Libraries Used](#libraries-used)
+    - [React Hook Form](#react-hook-form)
+    - [Ant Design (Antd)](#ant-design-antd)
+    - [Axios](#axios)
+    - [Zod Validation](#zod-validation)
+      - [Why Zod?](#why-zod)
+  - [Data Management Approaches](#data-management-approaches)
+    - [Context API for Authentication](#context-api-for-authentication)
+      - [Why Context API Is Utilized for Authentication](#why-context-api-is-utilized-for-authentication)
+    - [Custom Hooks for Customer Data](#custom-hooks-for-customer-data)
+      - [Why Custom Hooks Are Employed for Customer Data](#why-custom-hooks-are-employed-for-customer-data)
+  - [Atomic Design](#atomic-design)
+  - [Gitmoji Commit Convention](#gitmoji-commit-convention)
+    - [Gitmoji vs. Semantic Commits](#gitmoji-vs-semantic-commits)
+      - [Gitmoji](#gitmoji)
+      - [Semantic Commits](#semantic-commits)
+      - [Advantages of Gitmoji](#advantages-of-gitmoji)
+  - [License](#license)
+  - [Next Steps](#next-steps)
 
 ## Getting Started
 
@@ -57,6 +77,11 @@ Before you begin, ensure you have met the following requirements:
 
 6. The application will be available at <http://localhost:3000>.
 
+#### Credentials
+
+- **Username**: admin
+- **Password**: admin
+
 ## Libraries Used
 
 ### React Hook Form
@@ -96,6 +121,60 @@ Comparison with Alternatives:
 - **Other HTTP Libraries**: Axios competes with other popular HTTP libraries like superagent and request-promise. Axios stands out for its simplicity, promise-based API, and widespread adoption in the JavaScript community.
 
 By choosing React Hook Form, Ant Design, and Axios, we aim to streamline our development process, ensure a polished user interface, and simplify data management and API interactions. These libraries have proven to be reliable, efficient, and well-maintained, making them excellent choices for our project.
+
+### Zod Validation
+
+We utilize the Zod library for input validation and schema management in our project. Zod provides a simple and type-safe way to define data validation schemas in TypeScript.
+
+#### Why Zod?
+
+Zod offers several advantages when it comes to data validation:
+
+- **Type Safety:** Zod allows us to define validation schemas as TypeScript types, ensuring that our validation logic is type-safe and integrated seamlessly with our codebase.
+
+- **Declarative Syntax:** Zod uses a declarative and intuitive syntax to define validation rules, making it easy to understand and maintain our validation logic.
+
+- **Custom Error Messages:** Zod enables us to specify custom error messages for different validation failures, improving the clarity of error reporting to our users.
+
+- **Rich Validation Features:** Zod supports a wide range of validation features, including required fields, data transformations, and complex data structures.
+
+By using Zod, we ensure that our application's data is validated accurately and consistently, reducing the likelihood of runtime errors and enhancing the user experience.
+
+## Data Management Approaches
+
+Two distinct approaches are utilized for data management: Context API for authentication and custom hooks for customer data. Each approach serves a specific purpose and benefits the overall structure and functionality of the application.
+
+### Context API for Authentication
+
+#### Why Context API Is Utilized for Authentication
+
+The decision to use Context API for authentication is grounded in several considerations:
+
+1. **Global State Management:** Authentication state is a global concern that impacts various aspects of the application. The Context API enables centralized and efficient management of this state.
+
+2. **Simplicity:** The Context API streamlines the process of passing authentication-related data (e.g., user information, login/logout functions) down the component tree, making it accessible to any component that requires it.
+
+3. **State Persistence:** The Context API facilitates the persistence of authentication state across different routes and components without the complexity of prop drilling.
+
+4. **Integration with Axios:** The Context API seamlessly integrates with Axios, allowing unified management of authentication and data fetching.
+
+### Custom Hooks for Customer Data
+
+#### Why Custom Hooks Are Employed for Customer Data
+
+Custom hooks, a flexible and reusable pattern in React for encapsulating logic, are chosen for handling customer data for the following reasons:
+
+1. **Modularity:** Custom hooks promote separation of concerns and encapsulation of logic related to customer data retrieval. This results in a more modular and maintainable codebase.
+
+2. **Reusability:** The same logic for fetching and managing customer data can be easily reused in multiple components throughout the application by creating custom hooks.
+
+3. **Simplified Components:** Custom hooks help maintain clean and focused components, as data-fetching logic is abstracted away from rendering and user interaction.
+
+4. **Testing:** Custom hooks can be tested in isolation, simplifying the testing process for data-fetching and state management.
+
+5. **Decoupling from Context API:** While the Context API is employed for authentication, customer data is more specific to certain parts of the application. Using custom hooks allows decoupling customer data management from the authentication context, providing improved separation of concerns.
+
+In summary, the utilization of Context API for authentication and custom hooks for customer data is driven by the aim for a modular, maintainable, and efficient approach to data management. These choices contribute to a well-organized and scalable codebase, enhancing the development experience and user interaction in the application.
 
 ## Atomic Design
 
@@ -174,3 +253,19 @@ In summary, while both Gitmoji and Semantic Commits serve the purpose of providi
 ## License
 
 This project is licensed under the MIT License. See the LICENSE.md file for details.
+
+## Next Steps
+
+1. **Token Verification:** Implement token verification to ensure that each time a user accesses the application, their stored token is checked for validity. This step enhances security and maintains user authentication.
+
+2. **Access Control Components:** Develop access control components that encapsulate and manage permissions based on user roles. This approach allows for fine-grained control over which components and features users can access.
+
+3. **User Management Module:** Create a dedicated user management module within the application. This module will empower administrators to manage user accounts, roles, and permissions efficiently.
+
+4. **CSS Style Enhancements:** Continue to refine and improve the CSS styles throughout the application. A polished and visually appealing interface enhances the overall user experience.
+
+5. **Automated Testing:** Implement automated testing to ensure the reliability and robustness of our application. Comprehensive test suites help catch and prevent potential issues early in the development process.
+
+6. **CI/CD Pipeline:** Establish a Continuous Integration/Continuous Deployment (CI/CD) pipeline to automate the deployment and delivery of new application versions. CI/CD streamlines the release process, improving deployment speed and reliability.
+
+These steps represent the ongoing commitment to building a secure, feature-rich, and user-friendly application.
