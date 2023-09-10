@@ -1,6 +1,6 @@
 # Customer Management Web Application
 
-Welcome to the frontend project of our customer management application. This README provides essential information about the project, including requirements, scripts, libraries, and design patterns used.
+Welcome to the frontend project of the customer management application. This README provides essential information about the project, including requirements, scripts, libraries, and design patterns used.
 
 ## Table of Contents
 
@@ -86,7 +86,7 @@ Before you begin, ensure you have met the following requirements:
 
 ### React Hook Form
 
-React Hook Form is a library used for form handling in our application. It simplifies form management and validation with React hooks. We chose React Hook Form for the following reasons:
+React Hook Form is a library used for form handling in the application. It simplifies form management and validation with React hooks. React Hook Form has been chosen for the following reasons:
 
 - **Simplicity and Performance**: React Hook Form provides a simple and efficient way to manage form state and validation without the need for complex abstractions or additional components. It leverages React's hook system to minimize re-renders, resulting in better performance.
 
@@ -96,17 +96,17 @@ React Hook Form is a library used for form handling in our application. It simpl
 
 ### Ant Design (Antd)
 
-Ant Design, or Antd, is a comprehensive design system and set of high-quality UI components that we use for our project. Here's why we chose Antd:
+Ant Design, or Antd, is a comprehensive design system and set of high-quality UI components that are used in the project. Here's why Antd has been chosen:
 
-- **Consistency and Cohesion**: Antd provides a cohesive and visually appealing design system, ensuring that our application's user interface remains consistent across different components and screens. This consistency helps create a polished and professional user experience.
+- **Consistency and Cohesion**: Antd provides a cohesive and visually appealing design system, ensuring that the application's user interface remains consistent across different components and screens. This consistency helps create a polished and professional user experience.
 
-- **Rich Component Library**: Antd offers a vast library of pre-designed UI components, including buttons, forms, modals, tables, and more. These components are highly customizable and save development time, as we don't need to build them from scratch.
+- **Rich Component Library**: Antd offers a vast library of pre-designed UI components, including buttons, forms, modals, tables, and more. These components are highly customizable and save development time, as they don't need to be built from scratch.
 
-- **Accessibility**: Antd emphasizes accessibility best practices, which aligns with our commitment to creating inclusive and user-friendly applications. This ensures that our application is accessible to all users, including those with disabilities.
+- **Accessibility**: Antd emphasizes accessibility best practices, which aligns with the commitment to creating inclusive and user-friendly applications. This ensures that the application is accessible to all users, including those with disabilities.
 
 ### Axios
 
-We use Axios for data fetching and making API calls in our application. Axios has been chosen due to the following advantages:
+Axios is used for data fetching and making API calls in the application. Axios has been chosen due to the following advantages:
 
 - **Simplicity**: Axios provides a straightforward and easy-to-use API for making HTTP requests. Its syntax is clear and concise, making it accessible to developers with various levels of experience.
 
@@ -120,25 +120,21 @@ Comparison with Alternatives:
 
 - **Other HTTP Libraries**: Axios competes with other popular HTTP libraries like superagent and request-promise. Axios stands out for its simplicity, promise-based API, and widespread adoption in the JavaScript community.
 
-By choosing React Hook Form, Ant Design, and Axios, we aim to streamline our development process, ensure a polished user interface, and simplify data management and API interactions. These libraries have proven to be reliable, efficient, and well-maintained, making them excellent choices for our project.
-
 ### Zod Validation
 
-We utilize the Zod library for input validation and schema management in our project. Zod provides a simple and type-safe way to define data validation schemas in TypeScript.
+The Zod library is utilized for input validation and schema management in the project. Zod provides a simple and type-safe way to define data validation schemas in TypeScript.
 
 #### Why Zod?
 
 Zod offers several advantages when it comes to data validation:
 
-- **Type Safety:** Zod allows us to define validation schemas as TypeScript types, ensuring that our validation logic is type-safe and integrated seamlessly with our codebase.
+- **Type Safety:** Zod allows us to define validation schemas as TypeScript types, ensuring that the validation logic is type-safe and integrated seamlessly with the codebase.
 
-- **Declarative Syntax:** Zod uses a declarative and intuitive syntax to define validation rules, making it easy to understand and maintain our validation logic.
+- **Declarative Syntax:** Zod uses a declarative and intuitive syntax to define validation rules, making it easy to understand and maintain the validation logic.
 
-- **Custom Error Messages:** Zod enables us to specify custom error messages for different validation failures, improving the clarity of error reporting to our users.
+- **Custom Error Messages:** Zod enables us to specify custom error messages for different validation failures, improving the clarity of error reporting to the users.
 
 - **Rich Validation Features:** Zod supports a wide range of validation features, including required fields, data transformations, and complex data structures.
-
-By using Zod, we ensure that our application's data is validated accurately and consistently, reducing the likelihood of runtime errors and enhancing the user experience.
 
 ## Data Management Approaches
 
@@ -178,7 +174,7 @@ In summary, the utilization of Context API for authentication and custom hooks f
 
 ## Atomic Design
 
-We are inspired by the principles of Atomic Design when structuring our components. Atomic Design is a design methodology that breaks down user interfaces into smaller, reusable building blocks. These building blocks are categorized into five levels: atoms, molecules, organisms, templates, and pages. Each level represents a different level of complexity and abstraction.
+The project is inspired by the principles of Atomic Design when structuring the components. Atomic Design is a design methodology that breaks down user interfaces into smaller, reusable building blocks. These building blocks are categorized into five levels: atoms, molecules, organisms, templates, and pages. Each level represents a different level of complexity and abstraction.
 
 - **Atoms:** These are the smallest and most fundamental building blocks of a user interface. Examples include buttons, input fields, labels, and icons. At the atomic level, components are simple and focused on a single function.
 
@@ -190,21 +186,21 @@ We are inspired by the principles of Atomic Design when structuring our componen
 
 - **Pages:** Pages represent complete screens or views within an application. They are the highest-level components and are built using templates, organisms, and other smaller components. Pages represent the final user experience and serve as the entry points for user interaction.
 
-While our application follows the spirit of Atomic Design by dividing our UI into components, containers, and pages, we do not adhere strictly to the original Atomic Design definitions. Instead, we adapt these concepts to our specific needs, aiming to achieve reusability and maintainability in our codebase.
+While the application follows the spirit of Atomic Design by dividing the UI into components, containers, and pages, it does not adhere strictly to the original Atomic Design definitions. Instead, it is adapted for specific needs, aiming to achieve reusability and maintainability in the codebase.
 
 **Atomic Design and SOLID Principles:**
 
 The Atomic Design methodology aligns well with the SOLID principles of software design, specifically the Single Responsibility Principle (SRP) and the Open/Closed Principle (OCP).
 
-- **Single Responsibility Principle (SRP):** Atomic Design encourages the creation of small, focused components (atoms) that have a single responsibility. This corresponds to the SRP, which states that a class or component should have only one reason to change. By keeping our atoms and molecules small and focused, we adhere to SRP.
+- **Single Responsibility Principle (SRP):** Atomic Design encourages the creation of small, focused components (atoms) that have a single responsibility. This corresponds to the SRP, which states that a class or component should have only one reason to change.
 
-- **Open/Closed Principle (OCP):** Atomic Design's modular structure makes it easier to extend the UI without modifying existing components. When we create new molecules or organisms, we're following the OCP, which states that software entities (components, in this case) should be open for extension but closed for modification.
+- **Open/Closed Principle (OCP):** Atomic Design's modular structure makes it easier to extend the UI without modifying existing components.
 
-In summary, while we may not strictly adhere to every aspect of Atomic Design, we are guided by its principles to create a maintainable and extensible UI. We use the concepts of atoms, molecules, organisms, templates, and pages to structure our code in a way that promotes reusability and separation of concerns, aligning with both Atomic Design and SOLID principles.
+In summary, while it may not strictly adhere to every aspect of Atomic Design, it is guided by its principles to create a maintainable and extensible UI.
 
 ## Gitmoji Commit Convention
 
-We use the Gitmoji commit convention to provide a visual representation of the purpose and content of each commit. This convention helps us understand changes at a glance and maintain a clean commit history.
+The Gitmoji commit convention is used to provide a visual representation of the purpose and content of each commit. This convention helps to understand changes at a glance and maintain a clean commit history.
 
 - :sparkles: `:sparkles:: Introducing new features
 - :bug: `:bug:: Fixing a bug
@@ -264,7 +260,7 @@ This project is licensed under the MIT License. See the LICENSE.md file for deta
 
 4. **CSS Style Enhancements:** Continue to refine and improve the CSS styles throughout the application. A polished and visually appealing interface enhances the overall user experience.
 
-5. **Automated Testing:** Implement automated testing to ensure the reliability and robustness of our application. Comprehensive test suites help catch and prevent potential issues early in the development process.
+5. **Automated Testing:** Implement automated testing to ensure the reliability and robustness of the application. Comprehensive test suites help catch and prevent potential issues early in the development process.
 
 6. **CI/CD Pipeline:** Establish a Continuous Integration/Continuous Deployment (CI/CD) pipeline to automate the deployment and delivery of new application versions. CI/CD streamlines the release process, improving deployment speed and reliability.
 
