@@ -10,6 +10,7 @@ Welcome to the frontend project of the customer management application. This REA
     - [Prerequisites](#prerequisites)
     - [Installation And Usage](#installation-and-usage)
       - [Credentials](#credentials)
+      - [Usage](#usage)
   - [Libraries Used](#libraries-used)
     - [React Hook Form](#react-hook-form)
     - [Ant Design (Antd)](#ant-design-antd)
@@ -88,6 +89,10 @@ The application has two users: the manager and the sales.
 2. Sales credentials:
    - **Username**: sales
    - **Password**: sales
+
+#### Usage
+
+For testing purposes, check out the TESTING.md file.
 
 ## Libraries Used
 
