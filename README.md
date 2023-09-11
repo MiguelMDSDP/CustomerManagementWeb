@@ -79,8 +79,15 @@ Before you begin, ensure you have met the following requirements:
 
 #### Credentials
 
-- **Username**: admin
-- **Password**: admin
+The application has two users: the manager and the sales.
+
+1. Manager credentials:
+   - **Username**: admin
+   - **Password**: admin
+
+2. Sales credentials:
+   - **Username**: sales
+   - **Password**: sales
 
 ## Libraries Used
 
@@ -254,14 +261,12 @@ This project is licensed under the MIT License. See the LICENSE.md file for deta
 
 1. **Token Verification:** Implement token verification to ensure that each time a user accesses the application, their stored token is checked for validity. This step enhances security and maintains user authentication.
 
-2. **Access Control Components:** Develop access control components that encapsulate and manage permissions based on user roles. This approach allows for fine-grained control over which components and features users can access.
+2. **User Management Module:** Create a dedicated user management module within the application. This module will empower administrators to manage user accounts, roles, and permissions efficiently.
 
-3. **User Management Module:** Create a dedicated user management module within the application. This module will empower administrators to manage user accounts, roles, and permissions efficiently.
+3. **CSS Style Enhancements:** Continue to refine and improve the CSS styles throughout the application. A polished and visually appealing interface enhances the overall user experience.
 
-4. **CSS Style Enhancements:** Continue to refine and improve the CSS styles throughout the application. A polished and visually appealing interface enhances the overall user experience.
+4. **Automated Testing:** Implement automated testing to ensure the reliability and robustness of the application. Comprehensive test suites help catch and prevent potential issues early in the development process.
 
-5. **Automated Testing:** Implement automated testing to ensure the reliability and robustness of the application. Comprehensive test suites help catch and prevent potential issues early in the development process.
-
-6. **CI/CD Pipeline:** Establish a Continuous Integration/Continuous Deployment (CI/CD) pipeline to automate the deployment and delivery of new application versions. CI/CD streamlines the release process, improving deployment speed and reliability.
+5. **CI/CD Pipeline:** Establish a Continuous Integration/Continuous Deployment (CI/CD) pipeline to automate the deployment and delivery of new application versions. CI/CD streamlines the release process, improving deployment speed and reliability.
 
 These steps represent the ongoing commitment to building a secure, feature-rich, and user-friendly application.
